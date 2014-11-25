@@ -1,0 +1,37 @@
+<div id="cmt">
+    <h4 name='title'>{{ cmtlen }}条评论</h4>
+    {% for cmt in comment %}
+    <div class="every_comment" thread="{{cmt.thread}}">
+        <p class="every_comment_header">{{ cmt.username }}于{{ cmt.publish_time|date:"Y,M,j" }}发表</p>
+        <p>{{ cmt.content }}</p>
+        <div class="logo"></div>
+        <span class="reply" to="{{cmt.username}}" father="{{cmt.id}}">回复</span>
+        <!-- <span>{{cmt.thread}}</span> -->
+    </div>
+    {% endfor %}
+</div>
+<script>
+	var comment = $('#cmt .every_comment');
+	for (var i = comment.length - 1; i >= 0; i--) {
+		var seg = comment[i].getAttribute('thread').split('.').length;
+		comment[i].style.cssText='width:'+(100-10*(seg-2))+'%;';
+	};
+    var reply = $('#cmt .reply');
+    console.log(reply.length);
+    for (var i = reply.length - 1; i >= 0; i--) {
+        reply[i].onclick = function(){
+            window.scrollTo(0,document.body.scrollHeight);
+            var to =this.getAttribute('to');
+            var thread =this.getAttribute('father');
+            $('#id_thread').attr('value',thread);
+            $('#cmt_title').html("你正在回复"+to);
+            var concel_btn=document.getElementById('concel_cmt');
+            concel_btn.style.display='block';
+            concel_btn.onclick =function(){
+                $('#id_thread').attr('value','');
+                $('#cmt_title').html("期待你的评论");
+                this.style.display='none';
+            }
+        }
+    };
+</script>

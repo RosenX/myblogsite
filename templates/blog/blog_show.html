@@ -1,0 +1,131 @@
+{% extends "base_nav.html" %}
+
+{% block title %} {{ blog.caption }} {% endblock %}
+
+{% block header %}
+<div class="blog_show_title">
+    <h1>该写些什么呢</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="show_content">
+    
+<div class="content_box" id="content_box">
+    <div class="content">
+        <h3>{{ blog.caption }}
+            <small>
+            {% if user.is_authenticated %}
+                <a href="edit">编辑</a>
+                <a href="del">删除</a>
+            {% endif %}
+            </small>
+            <label>
+                {% for tag in blog.tags.all %}
+                <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
+                {% endfor %}
+                阅读({{blog.visitedTime}})
+            </label>
+        </h3>
+        <div class="article_show">{{ blog.content }} </div>
+    </div>
+</div>
+
+<div id="cmt">
+    {% ifnotequal cmtlen 0 %}
+    <h4 name='title'>{{ cmtlen }}条评论</h4>
+    {% endifnotequal %}
+    {% for cmt in comment %}
+    <div class="every_comment" thread="{{cmt.thread}}">
+        <p class="every_comment_header">{{ cmt.username }}于{{ cmt.publish_time|date:"Y,M,j" }}发表</p>
+        <p>{{ cmt.content }}</p>
+        <div class="logo"></div>
+        <span class="reply" to="{{cmt.username}}" father="{{cmt.id}}">回复</span>
+        <!-- <span>{{cmt.thread}}</span> -->
+    </div>
+    {% endfor %}
+</div>
+
+<div id="cmt_form">
+    <h4 id="cmt_title">期待你的评论</h4>
+    <span id="concel_cmt">取消</span>
+    <form action="" method="POST">
+        <fieldset>
+        {% csrf_token %}
+        <input type="text" id="id_name" name="name" placeholder="姓名" required="required">
+        <input id="id_email" type="email" name="email" placeholder="邮箱" required="required">
+        <input id="cmt_submit_bottom" type="submit" name="submit" value="提交">
+        <textarea id="id_content" name="content" placeholder="内容" required="required"></textarea>
+        <input type="hidden" name="honeypot" id="id_honeypot">
+        <input type="hidden" id="id_thread" name="thread">
+        </fieldset>
+    </form>
+</div>
+
+</div>
+
+<div class="left_menu" id="left_menu">
+    <ul class="left_menu_choice" id="left_menu_choice">
+        <li id="menu_search">
+            <span>搜索</span>
+            <div class="menu_search_content"></div>
+        </li>
+        <li>
+            <span>标签</span>
+            <div id="menu_tag_content">
+                {% for tag in tags %}
+                <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
+                {% endfor %}
+            </div>
+        </li>
+        <li>
+            <span>排行</span>
+            <div id="menu_blogrank">
+                {% for blog in blog_popular %}
+                <a href="{% url detailblog blog.id %}">{{blog.caption}}({{blog.visitedTime}})</a>
+                {% endfor %}
+            </div>
+        </li>
+        <li>
+            <span>分类</span>
+            <div id="menu_classification">
+                {% for cla in classification %}
+                <a href="{% url blog_filter 2 cla.id %}">{{cla.name}}</a>
+                {% endfor %}
+            </div>
+        </li>
+    </ul>
+</div>
+
+{% endblock %}
+
+{% block script%}
+<script type="text/javascript" src="{{STATIC_URL}}js/blog/blog_show.js"></script>
+<script type="text/javascript" charset="utf-8">
+function bindPostCommentHandler() {
+    $('#cmt_form form').submit(function() {
+        $.ajax({
+            type: "POST",
+            data: $('#cmt_form form').serialize(),
+            url: "{{blog_show}}",
+            cache: false,
+            dataType: "html",
+            success: function(html, textStatus) {
+                $('#cmt').replaceWith(html);
+                $('#cmt_form form')[0].reset();
+                $('#id_thread').attr('value','');
+                $('#cmt_title').html("期待你的评论");
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#cmt_form form').replaceWith('Your comment was unable to be posted at this time.  We apologise for the inconvenience.');
+            }
+        });
+        return false;
+    });
+}
+ 
+$(document).ready(function() {
+    bindPostCommentHandler();
+});
+</script> 
+{% endblock %}

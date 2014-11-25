@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    background: url(/static/img/body28.jpg) no-repeat center fixed;
+    background-size:cover;
+    padding-top: 50px;
+    line-height:150%; 
+    list-style: none;
+    height: 100%;
+}
+
+#mainbody{
+    min-height: 100%;
+}
+
+.navbar{
+    background:rgba(0,0,0,0.5);
+    box-shadow:none;
+}
+
+#container{
+    width:1250px;
+    margin:0 auto;
+    position: relative;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.container_mv{
+    -webkit-perspective: 300;
+    -webkit-perspective-origin: 50% 50%;
+    -webkit-animation-name: bodymv;
+    -o-animation-name: bodymv;
+    animation-name: bodymv;
+    -webkit-animation-duration: 0.5;
+    -o-animation-duration: 0.5;
+    animation-duration: 0.5;
+}
+
+@keyframes bodymv{
+    from{
+    }
+    to{
+        left: 240px;
+    }
+}
+
+@-moz-keyframes bodymv /* Firefox */
+{
+    from{
+    }
+    to{
+        left: 240px;
+    }
+}
+
+@-webkit-keyframes bodymv /* Safari 和 Chrome */
+{
+    from{
+    }
+    to{
+        left: 240px;
+    }
+}
+
+@-o-keyframes bodymv /* Opera */
+{
+    from{
+    }
+    to{
+        left: 240px;
+    }
+}
+
+
+
+

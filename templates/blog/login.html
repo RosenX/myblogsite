@@ -1,0 +1,21 @@
+{% extends "base_nav.html" %}
+
+{% block title %} login {% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="login">
+	<form action="" method = "POST">
+	    {% csrf_token %}
+	    <!-- <div>
+	    	<label for = "username">用户名:</label>
+	    	<input type= "text" name="username",value="",id="username">
+	    </div> -->
+	  	<input type="text" class="nameInput" name="username" id="username" placeholder="用户名">
+	    <input type="password" class="passwordInput" name="password" placeholder="密码" id="password">
+	    <input type="submit" class="loginBtn" value="登&nbsp陆" />
+	    <input type="hidden"  name="next" value="{{ next|escape }}" />
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,162 @@
+.container_header h1{
+    color: rgb(29, 68, 74);
+    margin-left: 20px;
+}
+
+.container_header{
+    height: 50px;
+}
+
+.container_content{
+    width:75%;
+}
+
+.blog{
+    /*background-color: rgba(0,0,0,0.5);*/
+    padding-top: 0px;
+}
+
+.blog a{
+	color: #AFCAB1;
+}
+
+.blog a:hover{
+	color: #F3E9F9;
+}
+
+.blog .article{
+	color: #AFCAB1;
+}
+
+.blog h3{
+    margin-top: 0px;
+    font-size: 30px;
+    /*margin-bottom: 20px;*/
+}
+.blog small{
+    font-size: 15px;
+}
+.tag_logo{
+	font-size: 13px;
+	color: #AFCAB1;
+}
+
+.blog_container{
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px 15px 10px 15px;
+    margin: 20px;
+    /*border-radius: 5px;*/
+}
+
+.ps{
+	color: #AFCAB1;
+}
+
+.static_box{
+}
+
+.static_box .static_box_header{
+	height: 40px;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.static_box ul{
+	position: absolute;
+	width: 300px;
+}
+
+.static_box li{
+	float: left;
+	width: 100px;
+	height: 40px;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+	color: rgba(105, 137, 117, 0.48);
+}
+
+.static_blogrank{
+	display: none;
+}
+
+.static_classification{
+	display: none;
+}
+
+.static_box .select{
+	background-color: #9DB0A5;
+	color: #5F5555;
+}
+
+#static_box{
+	/*min-height:200px;*/
+    width: 300px;
+    margin:20px;
+    position: absolute;
+    left: 920px;
+    top: 50px;
+	color: #A994A8;
+}
+
+#static_box_container{
+	min-height:400px;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.static_tag_content a{
+	color: #AFCAB1;
+	margin: 2px;
+}
+
+.static_content{
+	padding: 10px;
+	font-size: 17px;
+}
+
+.static_content a:hover{
+	color: #F3E9F9;
+}
+
+.static_blogrank a{
+	color: #AFCAB1;
+	display: block;
+	text-align: center;
+}
+
+.static_classification a{
+	color: #AFCAB1;
+	display: block;
+	text-align: center;
+}
+
+#searchBar{
+	margin-bottom: 20px;
+}
+
+#id_keyWords{
+	background-color: rgba(0,0,0,0.6);
+	border:0px;
+	border-right: 1px solid #A5A480;
+	width: 250px;
+	height: 40px;
+	padding: 5px;
+	font-size: 17px;
+	float: left;
+}
+
+#searchBtn{
+	background-color: rgba(0,0,0,0.6);
+	border:0px;
+	height: 40px;
+	width: 50px;
+	margin-left: 0px;
+}
+
+#searchBtn:hover{
+	background-color:rgba(0,0,0,0.8); 
+}
+
+#searchBar{
+	width: 100%;
+}

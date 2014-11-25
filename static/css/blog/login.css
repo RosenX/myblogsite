@@ -1,0 +1,30 @@
+.login{
+    width: 500px;
+    height: 400px;
+    margin: 100px auto;
+    padding: 50px;
+}
+
+.login input{
+    display: block;
+    width: 70%;
+    height: 40px;
+    margin: 20px auto;
+    border: 0px;
+    font-size: 18px;
+    padding: 5px;
+    color: #8FA878;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.loginBtn{
+    width: 266px;
+    height: 46px;
+    border:1px solid;
+}
+
+.loginBtn:hover{
+    background-color:rgba(0,0,0,0.7);
+    color: #eee;
+    border:0px;
+}

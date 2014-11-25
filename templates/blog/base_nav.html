@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block nav %}
+
+<div id="nav">
+    <div id="nav_container">
+        <div id="nav_header">
+            {% if user.is_authenticated %}
+            <a href="#" class="myBrand" id="myBrand">ROSEN</a>
+            {% else %}
+            <a href="{% url login %}?next={{request.path}}" class="myBrand" id="myBrand">ROSEN</a>
+            {% endif %}
+        </div>
+        <div id="nav_menu">
+            {% if user.is_authenticated %}
+            <a href="{% url logout %}?next={{request.path}}">注销</a>
+            <a href="{% url blogadd %}">写博客</a>
+            {% endif %}
+            <a href="{% url blog_about %}">关于</a>
+            <a href="{% url bloglist %}">博客</a>
+            <a href="{% url blog_home %}">首页</a>
+        </div>
+        <!-- <div id="nav_footer">
+            <span id="nav_footer_logo">
+                版权
+            </span>
+        </div> -->
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

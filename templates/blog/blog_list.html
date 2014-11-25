@@ -1,0 +1,90 @@
+{% extends "base_nav.html" %}
+
+{% load filter_test %}
+
+{% block title %} 博客列表 {% endblock %}
+
+{% block header %}
+<div class="container_header">
+    <h1 class="title">博客列表</h1>
+</div>
+
+{% endblock %}
+
+{% block content %}
+{% block content_left %}
+<div class="container_content">
+    {% for blog in blogs %}
+    <div class="blog_container">
+        <div class="blog">
+            <div class="blog_header">
+                <h3>
+                    <a href="{% url detailblog blog.id %}">{{ blog.caption }}</a>
+                    <small class="blog_tags">
+                        <span class="glyphicon glyphicon-tags tag_logo"></span>
+                        {% for tag in blog.tags.all %}
+                        <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
+                        {% endfor %}
+                    </small>
+                    <label class="ps">
+                        阅读({{blog.visitedTime}})&nbsp&nbsp&nbsp{{blog.publish_time|date:'Y,M,j'}}
+                    </label>
+                </h3>
+            </div>
+            <div class="article" iid={{blog.id}}>{{blog.content|getfirstPara}}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+<div class="static_box" id="static_box">
+    <div class="searchBar" id="searchBar">
+        <form action="" method="get">
+            <input type="text" class="keyWords" id="id_keyWords" placeholder="搜索博客">
+            <span class="confirmBtn">
+                <button class="searchBtn" id="searchBtn" type="submit">Go</button>
+            </span>
+        </form>
+    </div>
+    <div class="static_box_container" id="static_box_container">
+        <div class="static_box_header" id="static_box_header">
+            <ul class="static_choice">
+                <li class="select">标签</li>
+                <li>排行</li>
+                <li>分类</li>
+            </ul>
+        </div>
+        <div class="static_content" id="static_content">
+            <div class="static_tag_content">
+                    {% for tag in tags %}
+                    <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
+                    {% endfor %}
+            </div>
+            <div class="static_blogrank">
+                {% for blog in blog_popular %}
+                <a href="{% url detailblog blog.id %}">{{blog.caption}}({{blog.visitedTime}})</a>
+                {% endfor %}
+            </div>
+            <div class="static_classification">
+                {% for cla in classification %}
+                <a href="{% url blog_filter 2 cla.id %}">{{cla.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        {% for item in blogs%}
+        //alert(item.id);
+        $("[iid={{item.id}}]").html( $("[iid={{item.id}}]").text());
+        {% endfor%}
+    });
+</script>
+{% endblock %}
