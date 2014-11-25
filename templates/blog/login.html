@@ -1,6 +1,12 @@
 {% extends "base_nav.html" %}
 
-{% block title %} login {% endblock %}
+{% block title %}
+	<title id="login-title">这就是入口</title>
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/login.css">
+{% endblock %}
 
 {% block header %}{% endblock %}
 

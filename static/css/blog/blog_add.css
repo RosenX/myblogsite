@@ -5,22 +5,17 @@
     padding: 10px;
 }
 
-td{
-    min-width: 50px;
-    padding: 10px;
-}
-td span{
-    color: rgb(110, 158, 166);
-}
-
 .field{
     width: 1000px;
     margin: 0 auto;
 }
+td{
+    padding: 5px 0;
+}
 
 .field #id_caption{
     font-size: 20px;
-    padding: 10px;
+    padding:0 5px;
     width: 1000px;
     height: 40px;
     border:0px;
@@ -28,8 +23,8 @@ td span{
 
 .field #id_tag{
     font-size: 20px;
-    padding: 10px;
-    width: 800px;
+    padding:0 5px;
+    width: 790px;
     height: 40px;
     border: 0px;
     /*border-right: 1px solid #90A192;*/
@@ -37,7 +32,7 @@ td span{
 
 .field #id_classification{
     font-size: 20px;
-    padding: 10px;
+    padding:0 5px;
     margin-left: 2px;
     width: 198px;
     height: 40px;

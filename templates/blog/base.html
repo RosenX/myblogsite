@@ -4,21 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% block title %}{% endblock %}
-    </title>
-
-    <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/common.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/bloglist.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/blog_add.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/blogshow.css">
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/blog_nav.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/login.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/homepage.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/blog_about.css">
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}ueditor/themes/default/ueditor.css"/>
+    <script type="text/javascript" src="{{STATIC_URL}}js/common.js"></script>
+    <script src="{{STATIC_URL}}js/jquery-2.1.1.min.js"></script>
+    {% block title %}{% endblock %}
+    {% block css %}{% endblock %}
+    {% block headscript %}{% endblock %}
 
 </head>
 
@@ -37,24 +29,9 @@
     </div>
     {% block footer %}
     {% endblock %}
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{STATIC_URL}}js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        window.UEDITOR_HOME_URL = "{{STATIC_URL}}ueditor/";
-    </script>
-    <script type="text/javascript" src="{{STATIC_URL}}ueditor/editor_config.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}ueditor/editor_all.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}js/common.js"></script>
     
     {% block script %}
     {% endblock %}
-    <script type="text/javascript">
-        SyntaxHighlighter.all();
-    </script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- // <script src="{{STATIC_URL}}js/bootstrap.min.js"></script> -->
 </body>
 </html>
 

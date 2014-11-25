@@ -1,6 +1,15 @@
 {% extends "base_nav.html" %}
 
-{% block title %} {{ blog.caption }} {% endblock %}
+{% block title %} 
+<title id="show-title">
+    {{ blog.caption }}
+</title> 
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/blogshow.css">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
+{% endblock %}
 
 {% block header %}
 <div class="blog_show_title">
@@ -13,33 +22,32 @@
     
 <div class="content_box" id="content_box">
     <div class="content">
-        <h3>{{ blog.caption }}
-            <small>
+        <div class="content-header">
+            <h3>{{ blog.caption }}</h3>
             {% if user.is_authenticated %}
                 <a href="edit">编辑</a>
                 <a href="del">删除</a>
             {% endif %}
-            </small>
             <label>
                 {% for tag in blog.tags.all %}
                 <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
                 {% endfor %}
                 阅读({{blog.visitedTime}})
             </label>
-        </h3>
+        </div>
         <div class="article_show">{{ blog.content }} </div>
     </div>
 </div>
 
 <div id="cmt">
     {% ifnotequal cmtlen 0 %}
-    <h4 name='title'>{{ cmtlen }}条评论</h4>
+    <h4 class='cmt_title'>{{ cmtlen }}条评论</h4>
     {% endifnotequal %}
     {% for cmt in comment %}
     <div class="every_comment" thread="{{cmt.thread}}">
         <p class="every_comment_header">{{ cmt.username }}于{{ cmt.publish_time|date:"Y,M,j" }}发表</p>
-        <p>{{ cmt.content }}</p>
         <div class="logo"></div>
+        <p class="every_comment_content">{{ cmt.content }}</p>
         <span class="reply" to="{{cmt.username}}" father="{{cmt.id}}">回复</span>
         <!-- <span>{{cmt.thread}}</span> -->
     </div>
@@ -50,7 +58,6 @@
     <h4 id="cmt_title">期待你的评论</h4>
     <span id="concel_cmt">取消</span>
     <form action="" method="POST">
-        <fieldset>
         {% csrf_token %}
         <input type="text" id="id_name" name="name" placeholder="姓名" required="required">
         <input id="id_email" type="email" name="email" placeholder="邮箱" required="required">
@@ -58,7 +65,6 @@
         <textarea id="id_content" name="content" placeholder="内容" required="required"></textarea>
         <input type="hidden" name="honeypot" id="id_honeypot">
         <input type="hidden" id="id_thread" name="thread">
-        </fieldset>
     </form>
 </div>
 
@@ -67,11 +73,11 @@
 <div class="left_menu" id="left_menu">
     <ul class="left_menu_choice" id="left_menu_choice">
         <li id="menu_search">
-            <span>搜索</span>
+            <span>搜<br>索</span>
             <div class="menu_search_content"></div>
         </li>
         <li>
-            <span>标签</span>
+            <span>标<br>签</span>
             <div id="menu_tag_content">
                 {% for tag in tags %}
                 <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
@@ -79,7 +85,7 @@
             </div>
         </li>
         <li>
-            <span>排行</span>
+            <span>排<br>行</span>
             <div id="menu_blogrank">
                 {% for blog in blog_popular %}
                 <a href="{% url detailblog blog.id %}">{{blog.caption}}({{blog.visitedTime}})</a>
@@ -87,7 +93,7 @@
             </div>
         </li>
         <li>
-            <span>分类</span>
+            <span>分<br>类</span>
             <div id="menu_classification">
                 {% for cla in classification %}
                 <a href="{% url blog_filter 2 cla.id %}">{{cla.name}}</a>
@@ -123,9 +129,11 @@ function bindPostCommentHandler() {
         return false;
     });
 }
- 
+
 $(document).ready(function() {
     bindPostCommentHandler();
 });
-</script> 
+</script>
+<script type="text/javascript" src="{{STATIC_URL}}ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
 {% endblock %}

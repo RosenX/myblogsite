@@ -6,13 +6,13 @@
 }
 
 .login input{
+    text-align: center;
     display: block;
     width: 70%;
     height: 40px;
     margin: 20px auto;
     border: 0px;
     font-size: 18px;
-    padding: 5px;
     color: #8FA878;
     background-color: rgba(0,0,0,0.6);
 }
@@ -20,7 +20,6 @@
 .loginBtn{
     width: 266px;
     height: 46px;
-    border:1px solid;
 }
 
 .loginBtn:hover{

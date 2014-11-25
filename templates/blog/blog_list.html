@@ -2,7 +2,17 @@
 
 {% load filter_test %}
 
-{% block title %} 博客列表 {% endblock %}
+{% block title %}
+    <title id="list-title">Rosen的博客列表</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/bloglist.css">
+{% endblock %}
+
+{% block headscript %}
+    
+{% endblock %}
 
 {% block header %}
 <div class="container_header">
@@ -18,18 +28,14 @@
     <div class="blog_container">
         <div class="blog">
             <div class="blog_header">
-                <h3>
-                    <a href="{% url detailblog blog.id %}">{{ blog.caption }}</a>
-                    <small class="blog_tags">
-                        <span class="glyphicon glyphicon-tags tag_logo"></span>
-                        {% for tag in blog.tags.all %}
-                        <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
-                        {% endfor %}
-                    </small>
-                    <label class="ps">
-                        阅读({{blog.visitedTime}})&nbsp&nbsp&nbsp{{blog.publish_time|date:'Y,M,j'}}
-                    </label>
-                </h3>
+                <h3><a href="{% url detailblog blog.id %}">{{ blog.caption }}</a></h3>
+                <span class="glyphicon glyphicon-tags tag_logo"></span>
+                {% for tag in blog.tags.all %}
+                <a href="{% url blog_filter 1 tag.id %}">{{tag.tag_name}}</a>
+                {% endfor %}
+                <label class="ps">
+                阅读({{blog.visitedTime}})&nbsp&nbsp&nbsp{{blog.publish_time|date:'Y,M,j'}}
+                </label>
             </div>
             <div class="article" iid={{blog.id}}>{{blog.content|getfirstPara}}</div>
         </div>
@@ -87,4 +93,5 @@
         {% endfor%}
     });
 </script>
+<script type="text/javascript" src="{{STATIC_URL}}js/blog/blog_list.js"></script>
 {% endblock %}

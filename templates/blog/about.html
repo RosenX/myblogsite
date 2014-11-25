@@ -1,5 +1,16 @@
 {% extends "base_nav.html" %}
 
+{% block title %}
+	<title id="about-title">关于Rosen</title>
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/blog_about.css">
+{% endblock %}
+
+{% block headscript %}
+{% endblock %}
+
 {% block header %}
 	<h2 class="about_header" id="about_header">
 		ABOUT
@@ -16,7 +27,7 @@
 			</div>
 			<div id="about_me_right">
 				<span id="message_right">
-					<span>IT技术宅</span>
+					<span>IT小宅</span>
 					<span>邮箱:Rosen9212@gmail.com</span>
 					<span>QQ:1521658516</span>
 				</span>

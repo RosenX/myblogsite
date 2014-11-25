@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
-{% block header %}
-
+{% block title %}
+	<title id="hometitle">Rosen的首页</title>
 {% endblock %}
+
+{% block css%}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/blog/homepage.css">
+{% endblock %}
+
+{%block headscript%}
+{%endblock%}
 
 {% block nav %}
 

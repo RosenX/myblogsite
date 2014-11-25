@@ -1,6 +1,7 @@
 .article_show{
     clear:both;
     position: relative;
+    margin-top: 10px;
 }
 
 .content_box{
@@ -13,6 +14,8 @@
 
 .content h3{
     margin-top: 5px;
+    margin-right: 5px;
+    display: inline-block;
 }
 
 .blog_show_title{
@@ -69,12 +72,11 @@
 
 #left_menu_choice li{
     width: 100%;
-    padding: 5px;
     text-align: center;
-    font-size: 18px;
     line-height: 20px;
-    color: #E6F7E7;
-    margin-bottom: 5px;
+    color: #AFCAB1;
+    margin-bottom: 10px;
+    padding: 5px 0;
 }
 
 #left_menu_choice .menu_choice_selected{
@@ -83,8 +85,11 @@
 }
 
 #left_menu span{
+    /*display: block;*/
+    margin:10px,0;
     width: 100%;
     height: 50px;
+    text-align: center;
 }
 
 #left_menu_choice{
@@ -174,9 +179,18 @@
 
 /*comment*/
 #cmt{
-    color: #eee;
+    color: #AFCAB1;
     width: 85%;
+    position: relative;
     margin: 0 auto;
+}
+
+#cmt .cmt_title{
+    color: #FFF;
+}
+
+#cmt .reply{
+    float: right;
 }
 
 #cmt .reply:hover{
@@ -195,8 +209,18 @@
 #cmt .every_comment{
     background-color: rgba(0,0,0,0.5);
     margin: 10px auto;
-    padding:5px;
+    padding: 5px;
+    /*padding: 10px 15px 10px 15px;*/
     float: right;
+}
+
+
+#cmt .logo{
+    width: 40px;
+    height: 40px;
+    /*background-color: #eee;*/
+    float: left;
+    margin-right:5px;
 }
 
 #cmt .every_comment p{
@@ -210,6 +234,15 @@
     margin: 50px auto;
     color: #eee;
 }
+
+#cmt .every_comment_header{
+    margin-bottom: 10px;
+}
+
+/*#cmt .every_comment_content{
+    margin-left: 10px;
+}*/
+
 #cmt_form #cmt_title{
     margin-top: 50px;
     display: block;
@@ -223,7 +256,7 @@
     font-size: 15px;
     line-height: 30px;
     background-color: rgba(0,0,0,0.5);
-    padding: 5px;
+    padding-left: 5px;
     border: 0px;
 }
 
@@ -242,6 +275,7 @@
 
 #cmt_form input[type=submit]{
     width: 90px;
+    height: 40px;
     border: 0px;
 }
 
