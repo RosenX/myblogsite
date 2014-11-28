@@ -9,7 +9,7 @@ class Tag(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     count = models.PositiveIntegerField(default=0)
     def __unicode__(self):
-        return self.tag_name
+        return self.tag_name        
 
 class Author(models.Model):
     user = models.OneToOneField(User)
