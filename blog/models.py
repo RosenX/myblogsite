@@ -16,7 +16,6 @@ class Author(models.Model):
     qq =models.CharField(max_length=50,blank=True)
     website = models.URLField(max_length=100,blank=True)
     count = models.PositiveIntegerField(default=0)
-
     def __unicode__(self):
         return self.user.username
 
@@ -24,6 +23,7 @@ class Classification(models.Model):
     name = models.CharField(max_length=50)
     count =models.PositiveIntegerField(default=0)
     create_time = models.DateTimeField(auto_now_add=True)
+    description =models.TextField()
     def __unicode__(self):
         return self.name
 
@@ -57,4 +57,6 @@ class Comment(models.Model):
     sonCnt = models.PositiveIntegerField(default=0)
     def __unicode__(self):
         return self.username
+
+        
 
